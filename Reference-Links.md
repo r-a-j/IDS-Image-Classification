@@ -7,3 +7,5 @@
 - [The world's largest collection of open source computer vision datasets and APIs.](https://universe.roboflow.com/)
 
 - [Caption Images](https://www.makesense.ai/)
+
+- [Run pytorch on NVIDIA GPU with (CUDA)](https://pytorch.org/get-started/locally/)
