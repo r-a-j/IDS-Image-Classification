@@ -74,14 +74,8 @@ or
  
 <!--START_SECTION:activity-->
 
-```console
-pip install pipreqs
-```
-
-```console
-pipreqs --force
-```
-
+- [The world's largest collection of open source computer vision datasets and APIs.](https://universe.roboflow.com/)
+ 
 detail reference: [here](https://precious-jalebi-a6ee2b.netlify.app/development-docs/#generate-automatic-requirementstxt)
 <!--END_SECTION:activity-->
 
