@@ -1,4 +1,9 @@
-# IDS-Image-Classification
+# Industrial Data Science 2 - Image-Classification
+## Technical University Dortmund
+
+<p align="center">
+  <img src="" />
+</p>
 
 ## ToDo: Add project description.
 
