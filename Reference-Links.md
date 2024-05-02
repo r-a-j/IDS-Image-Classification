@@ -9,3 +9,5 @@
 - [Caption Images](https://www.makesense.ai/)
 
 - [Run pytorch on NVIDIA GPU with (CUDA)](https://pytorch.org/get-started/locally/)
+
+- [Image Annotation - labelImg](https://github.com/HumanSignal/labelImg)
