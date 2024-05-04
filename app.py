@@ -1,24 +1,21 @@
 import gradio as gr
 from gradio.components import download_button
 from src.resize_images import resize_images
+from src.utils.read_strings import get_string
 
-def detect_and_classify(image):
-    
+def detect_and_classify(image):   
     # Train
-
-    # Detect
-    
+    # Detect  
     # Classify
-
     return image
 
 def resize_images(images_to_resize):
-    return images_to_resize
+    return "Saved to folder: resized_images"
 
 with gr.Blocks() as demo:
     
-    gr.Markdown("# Industrial Data Science 2 - Group 3")
-    gr.Markdown(f'<img src="https://partikel-art.de/wp-content/uploads/2024/03/Partikelart_Logo_header_n-1024x402.png" alt="PartikelART" height="73" width="186"/>')
+    gr.Markdown(get_string("app_title_markdown"))
+    gr.Markdown(get_string("company_logo_url_markdown"))
     with gr.Tab("Classify object"):
         with gr.Row():
             image = gr.Image(
@@ -34,17 +31,14 @@ with gr.Blocks() as demo:
     with gr.Tab("Resize images"):
         with gr.Row():
             images_to_resize = gr.Files(file_types=['.jpg', '.jpeg', '.png'])
-            result = gr.Files(file_count="multiple")
+            result = gr.Text(label="Result",scale=1)
         resize_button = gr.DownloadButton("Resize", variant="primary")    
     
     detect_button.click(detect_and_classify, inputs=image, outputs=detected_object_image)
-    resize_button.click(resize_images, inputs=images_to_resize, outputs=result)
+    resize_button.click(resize_images, inputs=images_to_resize, outputs=result)   
     
     gr.Markdown("### Group Members")
     gr.Markdown("###### Ananya Pal, Harsh Yadav, Trung Quy Duc Huynh, Saptarsi Bhattacharya, Purvanshi Sharma, Raj Anilbhai Pawar")
 
 if __name__ == '__main__':
     demo.launch()
-    
-    # gr.DownloadButton("Download", link="/file=material/test.txt")
-    # demo.launch(allowed_paths=["material/"])
