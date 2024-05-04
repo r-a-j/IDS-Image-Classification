@@ -1,7 +1,7 @@
 # Industrial Data Science 2 - Image-Classification
 
 <p align="center">
-  <img src="https://github.com/r-a-j/IDS-Image-Classification/blob/main/assets/logo.svg" />
+  <img src="https://github.com/r-a-j/IDS-Image-Classification/blob/main/assets/uni-logo.svg" />
 </p>
 
 ## Plan
