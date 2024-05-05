@@ -161,3 +161,4 @@ cython_debug/
 data/train/
 data/test/
 data/validate/
+/data/temp/plot.png
