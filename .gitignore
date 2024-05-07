@@ -162,3 +162,4 @@ data/train/
 data/test/
 data/validate/
 /data/temp/plot.png
+/data/resized_images
