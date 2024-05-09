@@ -94,10 +94,44 @@ or
  
 <!--START_SECTION:activity-->
 
-- [The world's largest collection of open source computer vision datasets and APIs.](https://universe.roboflow.com/)
+<details>
+  <summary>option 1</summary>
  
-detail reference: [here](https://precious-jalebi-a6ee2b.netlify.app/development-docs/#generate-automatic-requirementstxt)
+<!--START_SECTION:activity-->
+
+```console
+pip install pipreqs
+```
+
+```console
+pipreqs
+```
+Detail reference: [here](https://precious-jalebi-a6ee2b.netlify.app/development-docs/#generate-automatic-requirementstxt)
+
+
 <!--END_SECTION:activity-->
 
 </details>
 
+<details>
+  <summary>option 2</summary>
+ 
+<!--START_SECTION:activity-->
+
+```console
+pip install pigar
+```
+
+```console
+pigar generate
+```
+
+<!--END_SECTION:activity-->
+
+</details>
+
+<!--END_SECTION:activity-->
+
+</details>
+
+- [The world's largest collection of open source computer vision datasets and APIs.](https://universe.roboflow.com/)
