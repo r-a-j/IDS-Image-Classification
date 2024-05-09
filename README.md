@@ -93,8 +93,43 @@ or
   <summary>Autogenerate requirements.txt</summary>
  
 <!--START_SECTION:activity-->
+
+<details>
+  <summary>option 1</summary>
  
+<!--START_SECTION:activity-->
+
+```console
+pip install pipreqs
+```
+
+```console
+pipreqs
+```
 Detail reference: [here](https://precious-jalebi-a6ee2b.netlify.app/development-docs/#generate-automatic-requirementstxt)
+
+
+<!--END_SECTION:activity-->
+
+</details>
+
+<details>
+  <summary>option 2</summary>
+ 
+<!--START_SECTION:activity-->
+
+```console
+pip install pigar
+```
+
+```console
+pigar generate
+```
+
+<!--END_SECTION:activity-->
+
+</details>
+
 <!--END_SECTION:activity-->
 
 </details>
