@@ -22,21 +22,22 @@ class ClusteringAlgorithm:
         k_means.fit(X)
         
         X_classified = k_means.labels_
-        result = X_classified.reshape(height, width)
-        
-        data_folder = os.path.join(os.getcwd(), "IDS-Image-Classification/data/temp")
-        
+        result = X_classified.reshape(height, width)        
+            
         plt.figure(figsize=(12,12))
-        cmap = plt.get_cmap('jet', np.max(result) - np.min(result) + 1)
-        
-        plt.imshow(result, cmap=cmap)
-        
+        cmap = plt.get_cmap('jet', np.max(result) - np.min(result) + 1)        
+        plt.imshow(result, cmap=cmap)        
         cax = plt.axes([0.92, 0.125, 0.02, 0.5])
         plt.colorbar(cax=cax)
-        
-        plot_path = os.path.join(data_folder, 'plot.png')
+                
+        return ClusteringAlgorithm.get_plot(plt)
+    
+    def get_plot(plt):
+        HOME = os.getcwd()
+        temp_folder = os.path.join(HOME, "data/temp")        
+        if not os.path.exists(temp_folder):
+            os.makedirs(temp_folder)            
+        plot_path = os.path.join(temp_folder, 'plot.png')
         plt.savefig(plot_path)
         plt.close()
-        
-        plot_image = Image.open(plot_path)
-        return plot_image
+        return Image.open(plot_path)

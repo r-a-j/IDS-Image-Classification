@@ -36,7 +36,6 @@ def resize_images(images_to_resize, new_height = 640, new_width = 640):
         gr.Warning(message="Please select atleast one image file to resize!")
     else:
         HOME = os.getcwd()
-        input_folder = os.path.join(HOME, "images")
         output_folder = os.path.join(HOME, "data/resized_images")
         
         image_processor = ImageProcessor()
