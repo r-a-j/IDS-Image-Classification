@@ -130,6 +130,12 @@ pigar generate
 
 </details>
 
+- Install requirements.txt file
+
+```console
+pip install -r requirements. txt
+```
+
 <!--END_SECTION:activity-->
 
 </details>
