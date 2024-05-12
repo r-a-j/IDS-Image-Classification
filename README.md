@@ -130,14 +130,14 @@ pigar generate
 
 </details>
 
+<!--END_SECTION:activity-->
+
+</details>
+
 - Install requirements.txt file
 
 ```console
 pip install -r requirements. txt
 ```
-
-<!--END_SECTION:activity-->
-
-</details>
 
 - [The world's largest collection of open source computer vision datasets and APIs.](https://universe.roboflow.com/)
