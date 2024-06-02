@@ -1,9 +1,10 @@
 from cProfile import label
 import os
-import gradio as gr
+import gradio as gr  
 from src.ImageProcessor import ImageProcessor
 from src.utils.StringProcessor import StringProcessor
 from src.ClusteringAlgorithm import ClusteringAlgorithm
+from src.ClassifyYolo import ClassifyYolo
 from src.utils.ImageExtension import ImageExtension
 
 def detect_and_classify(image):
@@ -11,12 +12,12 @@ def detect_and_classify(image):
     if(image == None):
         gr.Warning(message="Please select image to classify!")
     else:
-        classes = 5
-        
-        ca = ClusteringAlgorithm()
-        k_means_img_result = ca.k_means(image, classes)
-        
-        return k_means_img_result            
+        cy = ClassifyYolo()
+        yolo_result = cy.classify(image)
+        return yolo_result
+        #classes = 5        
+        #ca = ClusteringAlgorithm()        
+        # k_means_img_result = ca.k_means(image, classes)                
 
 def resize_images(images_to_resize, new_height = 640, new_width = 640):
     
@@ -84,13 +85,13 @@ with gr.Blocks(theme=theme) as demo:
         with gr.Row():
             images_to_resize = gr.Files(file_types=[extension.value for extension in ImageExtension])
             result = gr.Text(label="Result",scale=1)
-        resize_button = gr.DownloadButton("Resize", variant="primary")    
+        resize_button = gr.DownloadButton(label="Resize", variant="primary")    
         
     detect_button.click(detect_and_classify, inputs=image, outputs=detected_object_image)
     resize_button.click(resize_images, inputs=[images_to_resize, image_height, image_width], outputs=result)   
     
     gr.Markdown(sp.get_string("group_markdown"))
-    gr.Markdown("Ananya Pal, Harsh Yadav, Trung Quy Duc Huynh, Saptarsi Bhattacharya, Purvanshi Sharma, Raj Anilbhai Pawar")
+    gr.Markdown("Ananya Pal, Harsh Yadav, Saptarsi Bhattacharya, Purvanshi Sharma, Raj Anilbhai Pawar")
 
 if __name__ == '__main__':
     demo.launch()
