@@ -163,3 +163,8 @@ data/test/
 data/validate/
 /data/temp/plot.png
 /data/resized_images
+/.vs/IDS-Image-Classification/FileContentIndex
+/.vs/PythonSettings.json
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/.vs/IDS-Image-Classification/v17
