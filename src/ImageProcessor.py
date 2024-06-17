@@ -49,10 +49,12 @@ class ImageProcessor:
         output_path = os.path.join(output_folder, filename)
 
         # Ensure output_path is a string
-        isinstance(output_path, str), f"Expected string but got {type(output_path)}"
+        if not isinstance(output_path, str):
+            raise ValueError(f"Expected string for output_path, got {type(output_path)}")
 
         # Ensure resize_image is ndarray
-        isinstance(resize_image, np.ndarray), f"Expected ndarray but got {type(resize_image)}"
+        if not isinstance(resize_image, np.ndarray):
+            raise ValueError(f"Expected ndarray for resize_image, got {type(resize_image)}")
 
         # Save resized image
         cv2.imwrite(output_path, resize_image)
