@@ -1,23 +1,22 @@
+# System Libraries
 import os
+
+# Third-Party Libraries
 from ultralytics import YOLO
 from PIL import Image
 
-class ClassifyYolo:
-    def classify(self, image):
-        model = YOLO("models/yolo/yolov8-custom-50-epoc.pt")    
-        
-        results = model([image])
+
+class YoloClassifier:
+    def __init__(self):
+        self.model = YOLO('models/yolo/yolov8n-met-nmet-100-epoc.pt')
+
+    def classify(self, pil_image: Image.Image) -> Image.Image:
+        results = self.model([pil_image], conf=0.4)
         for result in results:
-            boxes = result.boxes  # Boxes object for bounding box outputs
-            masks = result.masks  # Masks object for segmentation masks outputs
-            keypoints = result.keypoints  # Keypoints object for pose outputs
-            probs = result.probs  # Probs object for classification outputs
-            obb = result.obb  # Oriented boxes object for OBB outputs
-            
-            HOME = os.getcwd()
-            temp_folder = os.path.join(HOME, "data/temp")
+            temp_folder = os.path.join(os.getcwd(), "data/temp")
             if not os.path.exists(temp_folder):
                 os.makedirs(temp_folder)
-            
+
             plot_path = os.path.join(temp_folder, 'plot.png')
-            return Image.open(result.save(plot_path))
+            result.save(plot_path)
+            return Image.open(plot_path)

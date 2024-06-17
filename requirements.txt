@@ -3,6 +3,10 @@
 gradio==4.29.0
 matplotlib==3.8.4
 numpy==1.26.4
-opencv-python==4.9.0.80
+opencv-python==4.10.0.82
 pillow==10.3.0
 scikit-learn==1.4.2
+keras~=3.3.3
+dill~=0.3.8
+ultralytics~=8.2.34
+tensorflow~=2.16.1
