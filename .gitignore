@@ -168,3 +168,10 @@ data/validate/
 /.vs/slnx.sqlite
 /.vs/VSWorkspaceState.json
 /.vs/IDS-Image-Classification/v17
+models/cnn/cnn_metal_nonmetal_classifier_model.keras
+models/yolo/yolov8-custom-100-epoc.pt
+models/yolo/yolov8-custom-200-epoc.pt
+models/yolo/yolov8m-met-nmet-100-epoc.pt
+models/yolo/yolov8n-met-nmet-100-epoc.pt
+models/yolo/yolov8s-seg-100-epoc.pt
+models/yolo/yolov9c-seg.pt
