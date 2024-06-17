@@ -81,11 +81,11 @@ def resize_images(images_to_resize, new_height=640, new_width=640):
         images_to_resize, output_folder, new_width, new_height
     )
 
-    if saved == True:
+    if saved:
         log_message("info", message, skipped_files)
-
-    if saved == False:
-        log_message("error", message, skipped_files)    
+    
+    if not saved:
+        log_message("error", message, skipped_files)
 
     return sp.get_string("resized_success_html")
 
