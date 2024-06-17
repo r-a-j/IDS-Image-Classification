@@ -74,7 +74,7 @@ class CnnClassifier:
             text = f"{predicted_category.capitalize()} ({confidence:.2f}%)"
             font_scale = 0.4
             font = cv2.FONT_HERSHEY_SIMPLEX
-            (text_width, text_height), _ = cv2.getTextSize(text, font, font_scale, 1)
+            (text_height), _ = cv2.getTextSize(text, font, font_scale, 1)
             text_x = x1 + 2
             text_y = y1 + text_height + 2
             cv2.putText(
