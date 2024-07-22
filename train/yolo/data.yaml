@@ -1,0 +1,8 @@
+path: F:\Study\TU Dortmund\Industrial Data Science 2\Code\Reference\yolov-trials\data
+train: F:\Study\TU Dortmund\Industrial Data Science 2\Code\Reference\yolov-trials\data\train
+val: F:\Study\TU Dortmund\Industrial Data Science 2\Code\Reference\yolov-trials\data\val
+test: F:\Study\TU Dortmund\Industrial Data Science 2\Code\Reference\yolov-trials\data\test
+
+names:
+  0: metal
+  1: nonmetal
