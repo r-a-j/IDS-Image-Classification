@@ -26,7 +26,7 @@ def preprocess_image_for_segmentation(pil_image: Image.Image, img_size: int = 15
 
 class CnnClassifier:
     def __init__(self):
-        self.model = load_model('models/cnn/cnn_metal_nonmetal_classifier_model.keras')
+        self.model = load_model('models/cnn/metal_classifier_model_optimized.keras')
 
     def classify(self, pil_image: Image.Image) -> str:
         preprocessed_image = preprocess_image(pil_image)

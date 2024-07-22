@@ -16,7 +16,6 @@ from src.ClassifyCnn import CnnClassifier
 # Image Processing Libraries
 from PIL import Image
 
-
 def kmeans_cluster(pil_image):
     if pil_image is None:
         gr.Warning(message="Please select image to cluster!")
@@ -26,7 +25,6 @@ def kmeans_cluster(pil_image):
         k_means_img_result = ca.k_means(pil_image, classes)
         return k_means_img_result
 
-
 def detect_yolo_and_classify(pil_image: Image.Image) -> Image.Image:
     if pil_image is None:
         raise ValueError("Please select an image to classify!")
@@ -34,7 +32,6 @@ def detect_yolo_and_classify(pil_image: Image.Image) -> Image.Image:
         classifier = YoloClassifier()
         output_image = classifier.classify(pil_image)
         return output_image
-
 
 def detect_cnn_and_classify(pil_image: Image.Image) -> Image.Image:
     if pil_image is None:
@@ -44,10 +41,8 @@ def detect_cnn_and_classify(pil_image: Image.Image) -> Image.Image:
         output_image = classifier.segment_and_draw_bounding_box(pil_image)
         return output_image
 
-
 def create_message(message, skipped_files):
     return f"Message: {' '.join(message)}\nSkipped Files: {' '.join(skipped_files)}"
-
 
 def log_message(message_type, message, skipped_files):
     formatted_message = create_message(message, skipped_files)
@@ -58,28 +53,28 @@ def log_message(message_type, message, skipped_files):
     else:
         raise ValueError("Invalid message_type")
 
-
-def resize_images(images_to_resize, new_height=640, new_width=640):
+def resize_images(images_to_resize, new_height, new_width):
     if images_to_resize is None or not images_to_resize:
         raise ValueError("Please select at least one image file to resize!")
 
     home = os.getcwd()
     output_folder = os.path.join(home, "data/resized_images")
 
-    if new_height < 640:
-        new_height = 640
-    elif new_height > 1500:
-        new_height = 1500
+    if new_height < 128:
+        new_height = 128
+    elif new_height > 2560:
+        new_height = 2560
 
-    if new_width < 640:
-        new_width = 640
-    elif new_width > 1500:
-        new_width = 1500
+    if new_width < 128:
+        new_width = 128
+    elif new_width > 2560:
+        new_width = 2560
 
     image_processor = ImageProcessor()
-    saved, message, skipped_files = image_processor.resize_and_save(
-        images_to_resize, output_folder, new_width, new_height
-    )
+    saved, message, skipped_files = image_processor.resize_and_save(images_to_resize, 
+                                                                    output_folder, 
+                                                                    new_width, 
+                                                                    new_height)
 
     if saved:
         log_message("info", message, skipped_files)
@@ -89,7 +84,49 @@ def resize_images(images_to_resize, new_height=640, new_width=640):
 
     return sp.get_string("resized_success_html")
 
+def apply_augmentations(images_to_augment, augmentations, image_height, image_width):
+    if images_to_augment is None or not images_to_augment:
+        raise ValueError("Please select at least one image file to augment!")
 
+    home = os.getcwd()
+    output_folder = os.path.join(home, "data/augmented_images")
+
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    augmentations_map = {
+        'Resize': lambda img: ImageProcessor.resize_image(img, (image_width, image_height)),
+        'Flip Horizontal': lambda img: ImageProcessor.transpose_image(img, Image.FLIP_LEFT_RIGHT),
+        'Flip Vertical': lambda img: ImageProcessor.transpose_image(img, Image.FLIP_TOP_BOTTOM),
+        'Rotate': lambda img: ImageProcessor.rotate_image(img, 45),  # You can allow custom angles
+        'Crop': lambda img: ImageProcessor.crop_image(img, (10, 10, image_width - 10, image_height - 10)),
+        'Grayscale': lambda img: ImageProcessor.convert_image(img, 'L'),
+        'Enhance Contrast': lambda img: ImageProcessor.enhance_image(img, 'contrast', 2.0),
+        'Enhance Brightness': lambda img: ImageProcessor.enhance_image(img, 'brightness', 2.0),
+        'Enhance Color': lambda img: ImageProcessor.enhance_image(img, 'color', 2.0),
+        'Enhance Sharpness': lambda img: ImageProcessor.enhance_image(img, 'sharpness', 2.0),
+        'Add Padding': lambda img: ImageProcessor.add_padding(img, 20),
+        'Add Noise': lambda img: ImageProcessor.add_noise(img, 'gaussian'),
+        'Blur': lambda img: ImageProcessor.blur_image(img, 2),
+        'Shear': lambda img: ImageProcessor.shear_image(img, 0.2),
+        'Change Hue': lambda img: ImageProcessor.change_hue(img, 100),
+        'Cutout': lambda img: ImageProcessor.cutout(img, 50),
+        'Mosaic': lambda img: ImageProcessor.mosaic(images_to_augment, 128)  # This requires multiple images
+    }
+
+    selected_augmentations = [augmentations_map[aug] for aug in augmentations]
+
+    image_processor = ImageProcessor()
+    messages = []
+
+    for image_path in images_to_augment:
+        success = image_processor.augment_image(image_path, output_folder, selected_augmentations)
+        if success:
+            messages.append(f"Augmented and saved to: {output_folder}")
+
+    return "\n".join(messages)
+
+# Define the custom theme
 theme = gr.themes.Base(
     primary_hue="purple",
     secondary_hue="violet",
@@ -100,11 +137,9 @@ theme = gr.themes.Base(
         "monospace",
     ],
 ).set(
-    background_fill_primary="*primary_50",
     button_shadow="*shadow_drop",
     button_shadow_active="*block_label_shadow",
 )
-
 
 with gr.Blocks(theme=theme) as demo:
     sp = StringProcessor()
@@ -137,11 +172,17 @@ with gr.Blocks(theme=theme) as demo:
             image_height = gr.Number(label="Image height in px", value=640, scale=1)
             image_width = gr.Number(label="Image width in px", value=640, scale=1)
         with gr.Row():
-            images_to_resize = gr.Files(
+            images_to_augment = gr.Files(
                 file_types=[extension.value for extension in ImageExtension]
             )
             result = RichTextbox(label="Result", scale=1)
-        resize_button = gr.DownloadButton(label="Resize", variant="primary")
+        with gr.Row():
+            augmentations = gr.CheckboxGroup(label="Select Augmentations", choices=[
+                'Resize', 'Flip Horizontal', 'Flip Vertical', 'Rotate', 'Crop', 'Grayscale',
+                'Enhance Contrast', 'Enhance Brightness', 'Enhance Color', 'Enhance Sharpness',
+                'Add Padding', 'Add Noise', 'Blur', 'Shear', 'Change Hue', 'Cutout', 'Mosaic'
+            ])
+        augment_button = gr.Button("Apply Augmentations", variant="primary")
 
     detect_yolo_button.click(
         detect_yolo_and_classify,
@@ -151,14 +192,13 @@ with gr.Blocks(theme=theme) as demo:
     detect_cnn_button.click(
         detect_cnn_and_classify, inputs=image_for_cnn, outputs=detected_cnn_object_image
     )
-    resize_button.click(
-        resize_images,
-        inputs=[images_to_resize, image_height, image_width],
+    augment_button.click(
+        apply_augmentations,
+        inputs=[images_to_augment, augmentations, image_height, image_width],
         outputs=result,
     )
 
-    gr.Markdown(sp.get_string("group_markdown"))
-    gr.Markdown(sp.get_string("group_members"))
+    gr.Markdown(sp.get_string("subject_info_markdown"))
 
 if __name__ == "__main__":
     demo.launch()

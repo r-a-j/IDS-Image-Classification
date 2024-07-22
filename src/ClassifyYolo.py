@@ -8,7 +8,7 @@ from PIL import Image
 
 class YoloClassifier:
     def __init__(self):
-        self.model = YOLO('models/yolo/yolov8n-met-nmet-100-epoc.pt')
+        self.model = YOLO('models/yolo/yolo-v8-mobile-200-epoc.pt')
 
     def classify(self, pil_image: Image.Image) -> Image.Image:
         results = self.model([pil_image], conf=0.4)
