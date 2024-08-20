@@ -114,5 +114,3 @@ The next phase involves creating a single model using transfer learning, combini
 - **Other References:**
 
 ---
-
-This `README.md` is now comprehensive and includes all the necessary details for your project. It can be directly used in your repository.
