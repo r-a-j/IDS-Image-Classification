@@ -79,7 +79,16 @@ The project successfully developed models for metal and non-metal particle class
 | CNN                             | Microscope (High Res)   | 97%          | 97%        | 0.10         | 0.20       |
 | CNN                             | Mobile Phone (Low Res)  | 93%          | 88%        | 0.17         | 0.30       |
 
-- **Microscope Image Results (YOLOv8 and CNN)**
+- **Microscope Image Results (CNN)**
+  
+</br>
+<p align="center">
+  <img src="https://github.com/r-a-j/IDS-Image-Classification/blob/main/results/CNN%20microscope%20results/Precision_Recall_Curve_Microscope_HD.png" alt="Precision_Recall_Curve_Microscope Image" align="center" >
+</p>
+</br>
+
+- **Microscope Image Results (YOLOv8)**
+  
 - **Mobile Image Results (YOLOv8 and CNN)**
 
 ## Conclusion
