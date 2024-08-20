@@ -79,8 +79,6 @@ The project successfully developed models for metal and non-metal particle class
 | CNN                             | Microscope (High Res)   | 97%          | 97%        | 0.10         | 0.20       |
 | CNN                             | Mobile Phone (Low Res)  | 93%          | 88%        | 0.17         | 0.30       |
 
-**Placeholder for Images:**
-
 - **Microscope Image Results (YOLOv8 and CNN)**
 - **Mobile Image Results (YOLOv8 and CNN)**
 
@@ -113,7 +111,7 @@ The next phase involves creating a single model using transfer learning, combini
 
 - **Ultralytics YOLOv8:** Glenn Jocher, Ayush Chaurasia, Jing Qiu. "Ultralytics YOLO." (2023). Available at: [Ultralytics YOLO](https://ultralytics.com)
 - **PartikelART Solutions GmbH:** Technical Cleanliness Solutions. Available at: [PartikelART](https://www.partikel-art.de/)
-- **Other References:** [Include other references used in the project]
+- **Other References:**
 
 ---
 
