@@ -120,6 +120,5 @@ The next phase involves creating a single model using transfer learning, combini
 
 - **Ultralytics YOLOv8:** Glenn Jocher, Ayush Chaurasia, Jing Qiu. "Ultralytics YOLO." (2023). Available at: [Ultralytics YOLO](https://ultralytics.com)
 - **PartikelART Solutions GmbH:** Technical Cleanliness Solutions. Available at: [PartikelART](https://www.partikel-art.de/)
-- **Other References:**
 
 ---
