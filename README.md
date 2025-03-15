@@ -83,7 +83,7 @@ The project successfully developed models for metal and non-metal particle class
   
 </br>
 <p align="center">
-  <img src="https://github.com/r-a-j/IDS-Image-Classification/blob/main/results/CNN%20microscope%20results/Precision_Recall_Curve_Microscope_HD.png" alt="Precision_Recall_Curve_Microscope Image" align="center" >
+  <img src="https://raw.githubusercontent.com/r-a-j/IDS-Image-Classification/main/results/CNN%20microscope%20results/Precision_Recall_Curve_Microscope_HD.png" alt="Precision_Recall_Curve_Microscope Image" align="center" >
 </p>
 </br>
 
