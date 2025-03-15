@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://github.com/r-a-j/IDS-Image-Classification/blob/main/assets/company-logo.png" alt="PartikelArt Logo" align="left" height="80px" width="204px">
-  <img src="https://github.com/r-a-j/IDS-Image-Classification/blob/main/assets/uni-logo.svg" alt="TU Dortmund Logo" align="right" height="45px" width="250px">
+  <img src="https://github.com/r-a-j/IDS-Image-Classification/blob/main/assets/company-logo.png?raw=true" alt="PartikelArt Logo" align="left" height="80px" width="204px">
+  <img src="https://github.com/r-a-j/IDS-Image-Classification/blob/main/assets/uni-logo.svg?raw=true" alt="TU Dortmund Logo" align="right" height="45px" width="250px">
 </p>
 <br>
 <br>
